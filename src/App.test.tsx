@@ -27,4 +27,45 @@ describe('App', () => {
       expect(screen.getByText('New Task')).toBeInTheDocument();
     });
   });
+
+  test('Should clear the input field after adding a task', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    const input = screen.getByRole('textbox', { name: 'Add Task:' });
+    const button = screen.getByRole('button', { name: 'Add' });
+
+    await user.type(input, 'New Task');
+    await user.click(button);
+
+    await waitFor(() => {
+      expect(input).toHaveValue('');
+    });
+  });
+
+  test('Should not add an empty task', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    const input = screen.getByRole('textbox', { name: 'Add Task:' });
+    const button = screen.getByRole('button', { name: 'Add' });
+
+    await user.type(input, '    ');
+    await user.click(button);
+
+    await waitFor(() => {
+      expect(screen.queryAllByRole('listitem')).toHaveLength(0);
+    });
+  });
+  test('Should add a task by pressing the enter key', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    const input = screen.getByRole('textbox', { name: 'Add Task:' });
+
+    await user.type(input, 'New Task{enter}');
+
+    await waitFor(() => {
+      expect(screen.queryAllByRole('listitem')).toHaveLength(1);
+    });
+  });
 });
