@@ -4,6 +4,8 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintPluginTestingLib from 'eslint-plugin-testing-library';
+import reactTests from '@testing-library/react';
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -17,6 +19,8 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      'jest-dom': eslintPluginTestingLib,
+      'testing-library': reactTests,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
