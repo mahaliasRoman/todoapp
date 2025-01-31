@@ -1,3 +1,4 @@
+import './styles/TaskListHeader.css';
 type TaskListHeaderProps = {
   count: number;
 };
@@ -5,7 +6,7 @@ type TaskListHeaderProps = {
 export default function TaskListHeader({ count }: TaskListHeaderProps) {
   return (
     <>
-      <h2>Total Tasks: ({count})</h2>
+      <h2 className="todo-counter">Total Tasks: ({count})</h2>
     </>
   );
 }

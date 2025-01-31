@@ -1,0 +1,48 @@
+.task-list-item {
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #f9f9f9;
+  font-size: 18px;
+  transition: 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.task-list-item:hover {
+  background: #f1f1f1;
+}
+
+.task-list-item.checked {
+  text-decoration: line-through;
+  color: #888;
+  background: #e8f5e9;
+  border-color: #c8e6c9;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  position: absolute;
+  right: 20px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.task-list-item.checked .checkbox {
+  background-color: #4caf50;
+}

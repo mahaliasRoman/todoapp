@@ -1,3 +1,20 @@
+import { useState } from 'react';
+import './styles/TaskListItem.css';
+
 export default function TaskListItem({ children }: React.PropsWithChildren) {
-  return <li>{children}</li>;
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
+  };
+
+  return (
+    <li
+      className={`task-list-item ${isChecked ? 'checked' : ''}`}
+      onClick={handleToggle}
+    >
+      {children}
+      <span className="checkbox"></span>
+    </li>
+  );
 }
