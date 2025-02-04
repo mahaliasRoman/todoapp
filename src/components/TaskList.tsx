@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/TaskList.css';
+import '../styles/TaskList.css';
 
 type TaskListProps = {
   header?: React.ReactNode;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Task } from './types.ts';
-import AddTask from './AddTask.tsx';
-import TaskList from './TaskList.tsx';
-import TaskListItem from './TaskListItem.tsx';
-import TaskListHeader from './TaskListHeader.tsx';
+import AddTask from './components/AddTask.tsx';
+import TaskList from './components/TaskList.tsx';
+import TaskListItem from './components/TaskListItem.tsx';
+import TaskListHeader from './components/TaskListHeader.tsx';
 import './styles/App.css';
 
 function App() {

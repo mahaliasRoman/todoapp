@@ -43,6 +43,15 @@
   transition: all 0.3s ease;
 }
 
+.checkmark {
+  opacity: 0;
+}
+
+.task-list-item.checked .checkmark {
+  opacity: 1;
+  color: black;
+}
+
 .task-list-item.checked .checkbox {
   background-color: #4caf50;
 }

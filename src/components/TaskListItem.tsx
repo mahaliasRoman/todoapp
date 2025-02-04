@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './styles/TaskListItem.css';
+import '../styles/TaskListItem.css';
 
 export default function TaskListItem({ children }: React.PropsWithChildren) {
   const [isChecked, setIsChecked] = useState(false);
@@ -14,7 +14,9 @@ export default function TaskListItem({ children }: React.PropsWithChildren) {
       onClick={handleToggle}
     >
       {children}
-      <span className="checkbox"></span>
+      <span className="checkbox">
+        <span className="checkmark">✓</span>
+      </span>
     </li>
   );
 }

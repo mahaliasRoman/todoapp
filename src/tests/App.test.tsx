@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { waitFor, render, screen } from '@testing-library/react';
-import App from './App.tsx';
+import App from '../App.tsx';
 import { userEvent } from '@testing-library/user-event';
 
 describe('App', () => {
