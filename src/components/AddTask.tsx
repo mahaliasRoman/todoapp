@@ -25,6 +25,7 @@ export default function AddTask({ onAddTask }: AddTaskProps) {
           Add Task:
         </label>
         <input
+          autoComplete="off"
           value={taskName}
           onChange={(e) => setTaskName(e.target.value)}
           id="task-input"
