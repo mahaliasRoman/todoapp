@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/TaskListItem.css';
 
 interface TaskListItemProps extends React.PropsWithChildren {
   taskId: number;
   onRemoveTask: (taskId: number) => void;
+  isChecked: boolean;
+  onToggleCompletion: (taskId: number) => void;
 }
 
 export default function TaskListItem({
   taskId,
   children,
   onRemoveTask,
+  isChecked,
+  onToggleCompletion,
 }: TaskListItemProps) {
-  const [isChecked, setIsChecked] = useState(false);
+  const [localChecked, setLocalChecked] = useState(isChecked);
+
+  useEffect(() => {
+    setLocalChecked(isChecked); // Sync local checked state with props
+  }, [isChecked]);
 
   const handleToggle = () => {
-    setIsChecked(!isChecked);
+    setLocalChecked(!localChecked);
+    onToggleCompletion(taskId);
   };
 
   const handleRemove = (event: React.MouseEvent<HTMLButtonElement>) => {

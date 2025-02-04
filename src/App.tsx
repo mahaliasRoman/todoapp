@@ -27,16 +27,32 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
+  const onToggleTaskCompletion = (taskId: number) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task,
+      ),
+    );
+  };
+
+  const doneTasksCount = tasks.filter((task) => task.isCompleted).length;
+
   return (
     <div className="todo-container">
-      <h1 className="todo-header">To do today:</h1>
+      <h1 className="todo-header">My to do list:</h1>
       <AddTask onAddTask={onAddTask} />
-      <TaskList header={<TaskListHeader count={tasks.length} />}>
+      <TaskList
+        header={
+          <TaskListHeader count={tasks.length} doneCount={doneTasksCount} />
+        }
+      >
         {tasks.map((task) => (
           <TaskListItem
             taskId={task.id}
             onRemoveTask={() => onRemoveTask(task.id)}
             key={task.id}
+            isChecked={task.isCompleted}
+            onToggleCompletion={onToggleTaskCompletion}
           >
             {task.title}
           </TaskListItem>
