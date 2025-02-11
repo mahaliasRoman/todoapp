@@ -1,38 +1,30 @@
-import { useState, useEffect } from 'react';
-import { Task } from './types.ts';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  addTask,
+  removeTask,
+  toggleTaskCompletion,
+} from './store/reducers/todoSlice';
 import AddTask from './components/AddTask.tsx';
 import TaskList from './components/TaskList.tsx';
 import TaskListItem from './components/TaskListItem.tsx';
 import TaskListHeader from './components/TaskListHeader.tsx';
 import './styles/App.css';
+import { RootState } from './store/store';
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>(() => {
-    const storedTasks = localStorage.getItem('tasks');
-    return storedTasks ? JSON.parse(storedTasks) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+  const tasks = useSelector((state: RootState) => state.todo.todos);
+  const dispatch = useDispatch();
 
   const onAddTask = (taskName: string) => {
-    setTasks([
-      ...tasks,
-      { id: Date.now(), title: taskName, isCompleted: false },
-    ]);
+    dispatch(addTask({ id: Date.now(), title: taskName, isCompleted: false }));
   };
 
   const onRemoveTask = (taskId: number) => {
-    setTasks(tasks.filter((task) => task.id !== taskId));
+    dispatch(removeTask(taskId));
   };
 
   const onToggleTaskCompletion = (taskId: number) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task,
-      ),
-    );
+    dispatch(toggleTaskCompletion(taskId));
   };
 
   const doneTasksCount = tasks.filter((task) => task.isCompleted).length;
@@ -52,7 +44,7 @@ function App() {
             onRemoveTask={() => onRemoveTask(task.id)}
             key={task.id}
             isChecked={task.isCompleted}
-            onToggleCompletion={onToggleTaskCompletion}
+            onToggleCompletion={() => onToggleTaskCompletion(task.id)}
           >
             {task.title}
           </TaskListItem>

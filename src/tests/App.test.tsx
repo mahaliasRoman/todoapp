@@ -2,10 +2,19 @@ import { describe, expect, test } from 'vitest';
 import { waitFor, render, screen } from '@testing-library/react';
 import App from '../App.tsx';
 import { userEvent } from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import { store } from '../store/store.ts';
+import { StrictMode } from 'react';
 
 describe('App', () => {
   test('Should render input field and add button', () => {
-    render(<App />);
+    render(
+      <Provider store={store}>
+        <StrictMode>
+          <App />
+        </StrictMode>
+      </Provider>,
+    );
 
     const input = screen.getByRole('textbox', { name: 'Add Task:' });
     const button = screen.getByRole('button', { name: 'Add' });
@@ -16,7 +25,13 @@ describe('App', () => {
 
   test('Should add task to list when add button is clicked', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(
+      <Provider store={store}>
+        <StrictMode>
+          <App />
+        </StrictMode>
+      </Provider>,
+    );
     const input = screen.getByRole('textbox', { name: 'Add Task:' });
     const button = screen.getByRole('button', { name: 'Add' });
 
@@ -32,7 +47,13 @@ describe('App', () => {
 
   test('Should clear the input field after adding a task', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(
+      <Provider store={store}>
+        <StrictMode>
+          <App />
+        </StrictMode>
+      </Provider>,
+    );
 
     const input = screen.getByRole('textbox', { name: 'Add Task:' });
     const button = screen.getByRole('button', { name: 'Add' });
@@ -49,7 +70,13 @@ describe('App', () => {
 
   test('Should not add an empty task', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(
+      <Provider store={store}>
+        <StrictMode>
+          <App />
+        </StrictMode>
+      </Provider>,
+    );
 
     const input = screen.getByRole('textbox', { name: 'Add Task:' });
     const button = screen.getByRole('button', { name: 'Add' });
@@ -61,9 +88,16 @@ describe('App', () => {
       expect(screen.queryAllByRole('listitem')).toHaveLength(0);
     });
   });
+
   test('Should add a task by pressing the enter key', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(
+      <Provider store={store}>
+        <StrictMode>
+          <App />
+        </StrictMode>
+      </Provider>,
+    );
     const input = screen.getByRole('textbox', { name: 'Add Task:' });
 
     await user.type(input, 'New Task{enter}');
@@ -74,9 +108,16 @@ describe('App', () => {
     const removeButton = screen.getByRole('button', { name: 'X' });
     await user.click(removeButton);
   });
+
   test('Should remove a task after creating it', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    render(
+      <Provider store={store}>
+        <StrictMode>
+          <App />
+        </StrictMode>
+      </Provider>,
+    );
     const input = screen.getByRole('textbox', { name: 'Add Task:' });
     const button = screen.getByRole('button', { name: 'Add' });
 

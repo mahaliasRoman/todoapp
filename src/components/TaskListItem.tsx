@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/TaskListItem.css';
 
-interface TaskListItemProps extends React.PropsWithChildren {
+type TaskListItemProps = React.PropsWithChildren & {
   taskId: number;
   onRemoveTask: (taskId: number) => void;
   isChecked: boolean;
   onToggleCompletion: (taskId: number) => void;
-}
+};
 
 export default function TaskListItem({
   taskId,
