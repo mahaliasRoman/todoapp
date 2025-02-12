@@ -1,4 +1,4 @@
-import '../styles/TaskListHeader.css';
+import '../styles/TaskListHeader.scss';
 type TaskListHeaderProps = {
   count: number;
   doneCount: number;

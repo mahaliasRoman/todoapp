@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/TaskListItem.css';
+import '../styles/TaskListItem.scss';
 
 type TaskListItemProps = React.PropsWithChildren & {
   taskId: number;

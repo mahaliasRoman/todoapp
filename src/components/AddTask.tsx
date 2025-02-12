@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/AddTask.css';
+import '../styles/AddTask.scss';
 
 type AddTaskProps = {
   onAddTask: (taskName: string) => void;

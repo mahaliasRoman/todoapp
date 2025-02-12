@@ -8,7 +8,7 @@ import AddTask from './components/AddTask.tsx';
 import TaskList from './components/TaskList.tsx';
 import TaskListItem from './components/TaskListItem.tsx';
 import TaskListHeader from './components/TaskListHeader.tsx';
-import './styles/App.css';
+import './styles/App.scss';
 import { RootState } from './store/store';
 
 function App() {

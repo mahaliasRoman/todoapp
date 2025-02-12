@@ -1,0 +1,15 @@
+.todo-counter,
+.todo-done-counter {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+
+  &.todo-counter {
+    font-size: 22px;
+  }
+
+  &.todo-done-counter {
+    font-size: 20px;
+    color: #4caf50;
+  }
+}

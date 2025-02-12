@@ -1,3 +1,7 @@
+$primary-color: #4caf50;
+$border-color: #ccc;
+$background-color: #f2f2f2;
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -12,8 +16,8 @@
 
 form {
   display: flex;
-  align-items: center; /* Aligns items vertically in the center */
-  justify-content: space-between; /* Spaces items apart, with equal space between */
+  align-items: center; // Aligns items vertically in the center
+  justify-content: space-between; // Spaces items apart, with equal space between
 }
 
 input,
@@ -21,7 +25,7 @@ select {
   width: 90%;
   padding: 12px 20px;
   margin: 8px 0;
-  border: 1px solid #ccc;
+  border: 1px solid $border-color;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -29,7 +33,7 @@ select {
 button {
   min-width: 10%;
   width: auto;
-  background-color: #4caf50;
+  background-color: $primary-color;
   color: white;
   padding: 12px 20px;
   margin: 8px 0;
@@ -43,6 +47,6 @@ button {
 
 div {
   border-radius: 5px;
-  background-color: #f2f2f2;
+  background-color: $background-color;
   padding: 20px;
 }
