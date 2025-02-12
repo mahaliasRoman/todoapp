@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/TaskListItem.scss';
+import CheckmarkIcon from './icons/CheckmarkIcon';
+import CloseIcon from './icons/CloseIcon.tsx';
 
 type TaskListItemProps = React.PropsWithChildren & {
   taskId: number;
@@ -18,7 +20,7 @@ export default function TaskListItem({
   const [localChecked, setLocalChecked] = useState(isChecked);
 
   useEffect(() => {
-    setLocalChecked(isChecked); // Sync local checked state with props
+    setLocalChecked(isChecked);
   }, [isChecked]);
 
   const handleToggle = () => {
@@ -37,11 +39,16 @@ export default function TaskListItem({
       onClick={handleToggle}
     >
       {children}
-      <span className="checkbox">
-        <span className="checkmark">✓</span>
-      </span>
-      <button className="remove-btn" onClick={handleRemove}>
-        X
+      <CheckmarkIcon
+        color={isChecked ? '#4caf50' : '#ccc'}
+        className="checkmark-icon"
+      />
+
+      <button onClick={handleRemove} className="remove-btn">
+        <CloseIcon
+          className="close-icon"
+          color={isChecked ? '#ff0000' : '#A9A9A9'}
+        />
       </button>
     </li>
   );

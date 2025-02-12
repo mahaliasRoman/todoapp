@@ -30,7 +30,7 @@ export default function AddTask({ onAddTask }: AddTaskProps) {
           onChange={(e) => setTaskName(e.target.value)}
           id="task-input"
         />
-        <button>Add</button>
+        <button className="add-button">Add</button>
       </form>
     </div>
   );
